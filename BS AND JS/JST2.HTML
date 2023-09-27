@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse String</title>
+</head>
+<body>
+    <h1>Reverse String</h1>
+    <p>Enter a string:</p>
+    <input type="text" id="inputString">
+    <button onclick="reverseAndDisplay()">Reverse</button>
+    <p>Reversed String: <span id="reversedString"></span></p>
+
+    <script>
+        function reverseString(x) {
+            let str = x.toString();
+            let reversedStr = str.split('').reverse().join('');
+            return reversedStr;
+        }
+
+        function reverseAndDisplay() {
+            const inputString = document.getElementById("inputString").value;
+            const reversedStringSpan = document.getElementById("reversedString");
+            const reversed = reverseString(inputString);
+            reversedStringSpan.textContent = reversed;
+        }
+    </script>
+</body>
+</html>

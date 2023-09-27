@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Date and Time Display</title>
+</head>
+<body>
+  <h1>Date and Time Display</h1>
+  
+  <button id="dateButton">Show Date</button>
+  <button id="timeButton">Show Time</button>
+  
+  <p id="result"></p>
+
+  <script>
+    function displayDate() {
+      // Create a Date object to get the current date
+      const currentDate = new Date();
+
+      // Get the day of the month, month, and year
+      const day = currentDate.getDate();
+      const month = currentDate.toLocaleString('default', { month: 'long' });
+      const year = currentDate.getFullYear();
+
+      // Display the date in the desired format
+      const resultElement = document.getElementById("result");
+      resultElement.textContent = `${day}/${month}/${year}`;
+    }
+
+    function displayTime() {
+      // Create a Date object to get the current time
+      const currentDate = new Date();
+
+      // Display the time in the desired format
+      const resultElement = document.getElementById("result");
+      resultElement.textContent = currentDate.toString();
+    }
+
+    document.getElementById("dateButton").addEventListener("click", displayDate);
+    document.getElementById("timeButton").addEventListener("click", displayTime);
+  </script>
+</body>
+</html>

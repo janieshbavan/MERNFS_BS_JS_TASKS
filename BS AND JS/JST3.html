@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiplication and Division Calculator</title>
+</head>
+<body>
+  <h1>Multiplication and Division Calculator</h1>
+  
+  <form>
+    <label for="num1">Enter the first number: </label>
+    <input type="number" id="num1" required>
+    <br>
+    
+    <label for="num2">Enter the second number: </label>
+    <input type="number" id="num2" required>
+    <br>
+
+    <button type="button" onclick="Division()">Division</button>
+    <button type="button" onclick="Multiply()">Multiplication</button>
+  </form>
+
+  <p id="result"></p>
+
+  <script>
+    let num1, num2;
+
+    function Division() {
+      num1 = parseFloat(document.getElementById("num1").value);
+      num2 = parseFloat(document.getElementById("num2").value);
+
+      if (num2 === 0) {
+        document.getElementById("result").textContent = "Division by zero is not allowed.";
+        return;
+      }
+
+      const division = num1 / num2;
+
+      document.getElementById("result").textContent = "Division: " + division;
+    }
+
+    function Multiply() {
+      if (num2 === 0) {
+        document.getElementById("result").textContent = "Division by zero is not allowed.";
+        return;
+      }
+
+      const multiplication = num1 * num2;
+
+      document.getElementById("result").textContent = "Multiplication: " + multiplication;
+    }
+  </script>
+</body>
+</html>

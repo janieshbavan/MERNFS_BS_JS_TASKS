@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            
+            border-radius: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        .error-message {
+            color: red;
+        }
+
+        .register-button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style="background: radial-gradient(circle at 5.3% 18.2%, rgb(255, 208, 253) 0%, rgb(255, 237, 216) 90%);">
+    <h1 style="color:blue;" align="center">Registration form</h1>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <div class="input-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName">
+                <span class="error-message" id="firstNameError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName">
+                <span class="error-message" id="lastNameError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <span class="error-message" id="emailError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <span class="error-message" id="passwordError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="rePassword">Re-enter Password:</label>
+                <input type="password" id="rePassword" name="rePassword">
+                <span class="error-message" id="rePasswordError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="gender">Gender:</label>
+                <label><input type="radio" name="gender" value="male">Male</label>
+                <label><input type="radio" name="gender" value="female">Female</label>
+            </div>
+
+            <div class="input-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age">
+                <span class="error-message" id="ageError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber">
+                <span class="error-message" id="phoneNumberError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address"></textarea>
+                <span class="error-message" id="addressError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state">
+                <span class="error-message" id="stateError"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="country">Country:</label>
+                <select id="country" name="country">
+                    <option value="usa">USA</option>
+                    <option value="canada">Canada</option>
+                    <!-- Add more country options -->
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Languages Known:</label>
+                <label><input type="checkbox" name="languages" value="english">English</label>
+                <label><input type="checkbox" name="languages" value="kannada">Kannada</label>
+                <label><input type="checkbox" name="languages" value="hindi">Hindi</label>
+                <label><input type="checkbox" name="languages" value="telugu">Telugu</label>
+            </div>
+
+            <div class="input-group">
+                <label><input type="checkbox" id="declare" name="declare">I hereby declare all the given details are true</label>
+            </div>
+
+            <div class="input-group">
+                <a href="https://www.ethunus.com" target="_blank">Login to Ethunus website</a>
+            </div>
+
+            <div class="register-button" onclick="register()">Register</div>
+        </form>
+    </div>
+
+    <script>
+        function register() {
+            // Reset all error messages
+            const formElements = document.getElementById("registrationForm").elements;
+            for (let i = 0; i < formElements.length; i++) {
+                if (formElements[i].type !== "radio" && formElements[i].type !== "checkbox") {
+                    const fieldName = formElements[i].name;
+                    const errorElement = document.getElementById(`${fieldName}Error`);
+                    errorElement.textContent = "";
+                    if (formElements[i].value === "" && fieldName !== "gender" && fieldName !== "languages" && fieldName !== "declare") {
+                        errorElement.textContent = "POOR";
+                    }
+                    if (fieldName === "password" && formElements[i].value === "") {
+                        errorElement.textContent = "POOR OR MISSING";
+                    }
+                }
+            }
+
+            // Additional validation and registration logic can be added here
+        }
+    </script>
+</body>
+</html>

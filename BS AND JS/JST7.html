@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animation Example</title>
+  <style>
+    #animation-container {
+      width: 792px; /* Set width to match image width */
+      height: 360px; /* Set height to match image height */
+      position: relative;
+      overflow: hidden;
+    }
+
+    #train {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%; /* Ensure the image takes the full width of the container */
+      height: auto; /* Maintain aspect ratio */
+    }
+
+    #buttons-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px; /* Adjust the height of the button container as needed */
+    }
+
+    #startButton, #stopButton {
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+ 
+
+  <div id="animation-container">
+    <!-- Use a relative path to the train image -->
+    <img id="train" src="train.jpg" alt="Train">
+  </div>
+  <div id="buttons-container">
+    <button id="startButton">Start</button>
+    <button id="stopButton">Stop</button>
+  </div>
+
+  <script>
+    let animationId = null;
+    let animationInProgress = false;
+    const train = document.getElementById("train");
+
+    function animate() {
+      if (!animationInProgress) return;
+      
+      // Update the animation here
+      const currentPosition = parseInt(train.style.left || 0);
+      const newPosition = currentPosition + 2;
+      train.style.left = newPosition + "px";
+
+      animationId = requestAnimationFrame(animate);
+    }
+
+    document.getElementById("startButton").addEventListener("click", () => {
+      if (!animationInProgress) {
+        animationInProgress = true;
+        animate();
+      }
+    });
+
+    document.getElementById("stopButton").addEventListener("click", () => {
+      if (animationInProgress) {
+        animationInProgress = false;
+        cancelAnimationFrame(animationId);
+      }
+    });
+  </script>
+</body>
+</html>
